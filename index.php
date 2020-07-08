@@ -5,7 +5,7 @@
     echo '</pre>';
     if (!isset($_SESSION['password'])) {
         $_SESSION['success'] = 'Bạn chưa đăng nhập';
-        header('location: login.php');
+        header('location: login/login.php');
         exit();
     }
 ?>
@@ -25,6 +25,6 @@
     <title>index</title>
 </head>
 <body>
-    <a href="logout.php"><h3>Logout</h3></a>
+    <a href="login/logout.php"><h3>Logout</h3></a>
 </body>
 </html>

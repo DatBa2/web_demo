@@ -27,7 +27,7 @@ echo '</pre>';
             if ($t==2) {
             $_SESSION['password'] = $password;
             $_SESSION['success'] = 'Đăng nhập thành công';
-            header('location: index.php');
+            header('location: ../index.php');
             exit();
             } else
                 $error = 'Sai password!';
