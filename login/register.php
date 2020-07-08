@@ -1,6 +1,8 @@
 <?php
     session_start();
     include_once 'config.php';
+    unset($_SESSION['username']);
+    unset($_SESSION['password']);
     $error = '';
 echo '<pre>';
 print_r($_SESSION);

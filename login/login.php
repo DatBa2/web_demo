@@ -8,18 +8,16 @@ print_r($_SESSION);
 echo '</pre>';
     $username = isset($_POST['username'])? $_POST['username']:'';
     $password = isset($_POST['password'])? $_POST['password']:'';
-    $sql = "SELECT * FROM user";
+    $sql = "SELECT username,password FROM user";
     $result = $connect->query($sql);
+    $t = 0;
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $t = 0;
-            if ($row['username']==$username) {
+            if ($row["username"] == $username && $row["password"]== $password) {
+                $t=2;
+                break;
+            } else if ($row["username"] == $username && $row["password"]!= $password)
                 $t=1;
-                if ($row['password']==$password) {
-                    $t=2;
-                    break;
-                }
-            }
         }
     } else
         echo 'Không thành công. Lỗi' . $connect->error;
@@ -27,6 +25,7 @@ echo '</pre>';
         if ($t>=1) {
             $_SESSION['username'] = $username;
             if ($t==2) {
+            $_SESSION['password'] = $password;
             $_SESSION['success'] = 'Đăng nhập thành công';
             header('location: index.php');
             exit();
